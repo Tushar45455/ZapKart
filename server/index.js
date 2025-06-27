@@ -7,6 +7,7 @@ import morgan from 'morgan';
 import helmet, { crossOriginResourcePolicy } from 'helmet';
 import connectDB from './config/connectDB.js';
 import { connect } from 'mongoose';
+import userRouter from './route/user.route.js';
 
 const app = express();
 app.use(cors({
@@ -15,7 +16,7 @@ app.use(cors({
 }))
 app.use(express.json());
 app.use(cookieParser());
-app.use(morgan());
+app.use(morgan('dev'));
 app.use(helmet({
     crossOriginResourcePolicy : false
 }))
@@ -29,7 +30,9 @@ app.get("/", (requset, responce)=>{
 
 })
 
-connectDB()
-app.listen(PORT,() => {
-    console.log("Server is running", PORT)
-})  
+app.use('/api/user', userRouter);
+
+connectDB();
+app.listen(PORT, () => {
+    console.log("Server is running", PORT);
+});
