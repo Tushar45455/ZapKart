@@ -5,7 +5,7 @@ const resend = new Resend(process.env.RESEND_API);
 const sendEmail = async ({ sendTo, subject, html }) => {
     try {
         const { data, error } = await resend.emails.send({
-            from: 'Blinkit <onboarding@resend.dev>',
+            from: 'Zapkart <onboarding@resend.dev>',
             to: sendTo,
             subject,
             html,

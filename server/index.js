@@ -22,9 +22,9 @@ app.use(helmet({
 }))
 
 const PORT = 8080 || process.env.PORT
-app.get("/", (requset, responce)=>{
+app.get("/", (request, response)=>{
     //server to client
-    responce.json({
+    response.json({
         message : "Server is running " + PORT
     })
 
